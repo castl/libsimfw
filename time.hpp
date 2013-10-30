@@ -21,6 +21,10 @@ namespace simfw {
         }
          
         double operator()() const {
+            return this->seconds();
+        }
+
+        double seconds() const {
             return ((double)t) / ConvToSec;
         }
 

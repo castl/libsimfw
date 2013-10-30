@@ -7,7 +7,7 @@
 namespace simfw {
 
     template<class Time>
-    class Timer : InputPort<Time, uint64_t> {
+    class Timer : protected InputPort<Time, uint64_t> {
         Time every;
         boost::function<bool(uint64_t)> func;
 
@@ -15,7 +15,7 @@ namespace simfw {
         Timer(Simulation<Time>* sim, Time every) :
             InputPort<Time, uint64_t>(sim),
             every(every) {
-
+            this->deliverIn(every, 1);
         }
 
     public:
